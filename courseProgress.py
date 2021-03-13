@@ -16,7 +16,6 @@ class Activity:
         self.complete = (complete == "TRUE")
         self.lastAccesed = datetime.datetime.strptime(lastAccesed, '%Y-%m-%d')
 
-
     def printInfo(self):
         """ Print the Activity """
         print(f"""Type:     {self.courseType:25} Course:   {self.courseName:20}
@@ -66,15 +65,15 @@ def main():
     else:
         print("No filter applied")
 
-
     # sort for date
     dtuActivityList.sort(key=lambda activity: activity.lastAccesed, reverse=True)
 
     print()
+    # a formatted list of records for verbose output
     for d in dtuActivityList:
         if verbose: d.printInfo()
     
-
+    # if there are matches output to file
     if len(dtuActivityList) > 0:
         with open(outputFileName, mode="w", encoding="utf=8") as csvwriter:
             fieldnames = ['type', 'asset', 'name', 'email', 'progress', 'complete', 'lastAccess']
