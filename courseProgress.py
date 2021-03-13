@@ -30,8 +30,8 @@ def main():
     #   ./courseProgress.py -f team.csv -c "Course" -o result.csv 
     parser = argparse.ArgumentParser(description="Track the team progress of a university course")
     parser.add_argument("dtuActivityFile", nargs=1, metavar="<dtu_activity_file>", help="The name of the .csv file")
-    parser.add_argument("--course", "-c", help="The name of the course you are interested in")
-    parser.add_argument("--output", "-o", required=False, help="Specifiy the custom file output, otherwise _result will be appended")
+    parser.add_argument("-c", "--course", help="The name of the course you are interested in")
+    parser.add_argument("-o", "--output", required=False, help="Specifiy the custom file output, otherwise _result will be appended")
     parser.add_argument("-v", "--verbose", help="Verbose output", action='store_true')
 
     args = parser.parse_args()
