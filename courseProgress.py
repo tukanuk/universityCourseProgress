@@ -57,9 +57,7 @@ def main():
         data = csv.DictReader(csvfile)
         if verbose: print(f"{'Field check:':35} {data.fieldnames}")
         for row in data:
-            # print(f"Course: {row['asset']}\t Name: {row['name']}\t Progress: {row['progress']}\t Last Accessed: {row['lastAccess']}")
             activity = Activity(row['type'], row['asset'], row['name'], row['email'], row['progress'], row['complete'], row['lastAccess'])
-            # activity.printInfo()
             dtuActivityList.append(activity)
 
     # filter the list
@@ -77,13 +75,16 @@ def main():
         if verbose: d.printInfo()
     
 
-    with open(outputFileName, mode="w", encoding="utf=8") as csvwriter:
-        fieldnames = ['type', 'asset', 'name', 'email', 'progress', 'complete', 'lastAccess']
-        writer = csv.DictWriter(csvwriter, fieldnames=fieldnames)
+    if len(dtuActivityList) > 0:
+        with open(outputFileName, mode="w", encoding="utf=8") as csvwriter:
+            fieldnames = ['type', 'asset', 'name', 'email', 'progress', 'complete', 'lastAccess']
+            writer = csv.DictWriter(csvwriter, fieldnames=fieldnames)
 
-        writer.writeheader()
-        for activity in dtuActivityList:
-            writer.writerow({'type': activity.courseType, 'asset': activity.courseName, 'name': activity.name, 'email': activity.email, 'progress': activity.progress, 'complete': activity.complete, 'lastAccess': activity.lastAccesed})
+            writer.writeheader()
+            for activity in dtuActivityList:
+                writer.writerow({'type': activity.courseType, 'asset': activity.courseName, 'name': activity.name, 'email': activity.email, 'progress': activity.progress, 'complete': activity.complete, 'lastAccess': activity.lastAccesed})
+    else:
+        print("There were no matches found. Does the course match exactly?")
 
 if __name__ == "__main__":
      main()
