@@ -4,6 +4,7 @@ import csv
 import argparse
 import datetime
 
+
 class Activity:
     """ An Activity Record """
 
@@ -12,9 +13,9 @@ class Activity:
         self.courseName = courseName
         self.name = name
         self.email = email
-        self.progress = float(progress)/100
+        self.progress = round(float(progress)/100, 2)
         self.complete = (complete == "TRUE")
-        self.lastAccesed = datetime.datetime.strptime(lastAccesed, '%Y-%m-%d')
+        self.lastAccesed = datetime.datetime.strptime(lastAccesed, '%m/%d/%y')
 
     def printInfo(self):
         """ Print the Activity """
