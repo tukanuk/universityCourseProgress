@@ -1,11 +1,13 @@
-from courseProgress import Activity
+from courseProgress import courseProgress
+
 
 def createActivityObject():
-    activity = Activity(
+    activity = courseProgress.Activity(
         "course", "Course Name", "Ben User", "user@email.com", 0.9, False, "3/22/21"
     )
 
     return activity
+
 
 def test_createActivityObject():
 
