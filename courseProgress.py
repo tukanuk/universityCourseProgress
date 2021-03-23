@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
 
+
+# TODO: Add unit tests. 
+# TODO: implement the --progress  function. Make sure both files are filtered and then look for name == name
+#       then diff progress , add progress column
+#       then diff lastAccess, add lastChecked column
+# TODO: modify complete column to show TRUE if progress is greater than 95% (people skip the endings)
+# TODO: Add course picker. If there is no -c flag Scan the file, list the courses, provide choice
+
 import csv
 import argparse
 import datetime
@@ -32,6 +40,7 @@ def main():
     parser.add_argument("dtuActivityFile", nargs=1, metavar="<dtu_activity_file>", help="The name of the .csv file")
     parser.add_argument("-c", "--course", help="The name of the course you are interested in")
     parser.add_argument("-o", "--output", required=False, help="Specifiy the custom file output, otherwise _result will be appended")
+    parser.add_argument("-p", "--progress", required=False, help="Compare the progress to an older version")
     parser.add_argument("-v", "--verbose", help="Verbose output", action='store_true')
 
     args = parser.parse_args()
@@ -42,6 +51,7 @@ def main():
     dtuActivityFile = args.dtuActivityFile[0]
     course = args.course
     verbose = args.verbose
+    dtuProgressFile = args.progress
 
     if args.output != None:
         outputFileName = args.output
