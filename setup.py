@@ -1,3 +1,3 @@
-from setuptools import setup, find_packages
+import setuptools
 
-setup(name="UniversityCourseProgress", packages=find_packages())
+setuptools.setup()
