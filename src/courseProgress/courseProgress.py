@@ -22,7 +22,7 @@ class Activity:
         self.name = name
         self.email = email
         self.progress = round(float(progress)/100, 2)
-        self.complete = (complete == "TRUE")
+        self.complete = (complete == "true")
         self.lastAccesed = datetime.datetime.strptime(lastAccesed, '%m/%d/%y')
 
     def printInfo(self):
